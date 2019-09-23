@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="IpFilter">
+	<typeAlias alias="ipFilter" type="com.ucenter.persistence.dbbean.IpFilter"/>
+
+	<insert id="insertIpFilter" parameterClass="ipFilter">
+		INSERT INTO t_ipfilter(
+			filter_id,game_id,ip,status
+		)VALUES(
+			#filterId#, #gameId#, #ip#, #status#
+		)
+		<selectKey resultClass="int" keyProperty="filterId" >  
+ 			select LAST_INSERT_ID()  
+		</selectKey>
+	</insert>
+
+	<select id="selectIpFilter" resultClass="ipFilter" parameterClass="int">
+		SELECT
+			0 AS new,
+			filter_id AS filterId,
+			game_id AS gameId,
+			ip,
+			status
+		FROM t_ipfilter 
+		WHERE filter_id = #filterId#
+	</select>
+	
+	<select id="findIpFilter" resultClass="ipFilter" parameterClass="int">
+		SELECT
+			0 AS new,
+			filter_id AS filterId,
+			game_id AS gameId,
+			ip,
+			status
+		FROM t_ipfilter 
+		WHERE filter_id = #filterId#
+	</select>
+	
+	<select id="selectIpFilterList" resultClass="ipFilter">
+		SELECT
+			0 AS new,
+			filter_id AS filterId,
+			game_id AS gameId,
+			ip,
+			status
+		FROM t_ipfilter 
+		WHERE 1 = 1 
+			<isNotEmpty prepend="AND" property="gameId">
+			game_id = #gameId#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="ip">
+			ip = #ip#
+			</isNotEmpty>
+	</select>
+
+	<select id="selectIpFilterTotal" resultClass="int">
+		SELECT count(1) as value 
+		FROM t_ipfilter 
+		WHERE 1 = 1 
+		    <isNotEmpty prepend="AND" property="gameId">
+			game_id = #gameId#
+			</isNotEmpty>
+	</select>
+
+	<update id="updateIpFilter" parameterClass="ipFilter">
+		UPDATE t_ipfilter
+		SET
+		    game_id = #gameId#,
+			ip = #ip#,
+			status = #status#
+		WHERE filter_id = #filterId#
+	</update>
+	
+	<delete id="deleteIpFilter" parameterClass="ipFilter">
+		DELETE FROM t_ipfilter
+		WHERE game_id = #gameId# AND ip = #ip#
+	</delete>
+</sqlMap>

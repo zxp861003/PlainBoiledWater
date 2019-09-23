@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ChargeOrder">
+	<typeAlias alias="chargeOrder" type="com.ucenter.persistence.dbbean.ChargeOrder"/>
+
+	<insert id="insertChargeOrder" parameterClass="chargeOrder">
+		INSERT INTO t_charge_order(
+			receipt_id,game_id,game_area,channel_id,
+			sub_channel,account,amount,currency,
+			pay_type,order_source,status,create_time,
+			close_time
+		)VALUES(
+			#receiptId#, #gameId#, #gameArea#,#channelId#,
+			#subChannel#, #account#, #amount#,#currency#,
+			#payType#,#orderSource#,#status#, #createTime#, 
+			#closeTime#
+		)
+		<selectKey resultClass="int" keyProperty="orderId" >  
+ 			select LAST_INSERT_ID()  
+		</selectKey>
+	</insert>
+
+	<select id="selectChargeOrder" resultClass="chargeOrder" parameterClass="int">
+		SELECT
+			0 AS new,
+			order_id AS orderId,
+			receipt_id AS receiptId,
+			game_id AS gameID,
+			game_area AS gameArea,
+			channel_id AS channelId,
+			sub_channel AS subChannel,
+			account,
+			amount,
+			currency,
+			pay_type AS payType,
+			order_source AS orderSource,
+			status,
+			create_time AS createTime,
+			close_time AS closeTime
+		FROM t_charge_order 
+		WHERE order_id = #orderId#
+	</select>
+	
+	<select id="selectChargeOrderList" resultClass="chargeOrder">
+		SELECT
+			0 AS new,
+			order_id AS orderId,
+			receipt_id AS receiptId,
+			game_id AS gameID,
+			game_area AS gameArea,
+			channel_id AS channelId,
+			sub_channel AS subChannel,
+			account,
+			amount,
+			currency,
+			pay_type AS payType,
+			order_source AS orderSource,
+			status,
+			create_time AS createTime,
+			close_time AS closeTime
+		FROM t_charge_order 
+		WHERE 1 = 1 
+			<isNotEmpty prepend="AND" property="orderId">
+			order_id = #orderId#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="channelId">
+			channel_id = #channelId#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gameId">
+			game_id = #gameId#
+			</isNotEmpty>
+	</select>
+
+	<select id="selectChargeOrderTotal" resultClass="int">
+		SELECT count(1) as value 
+		FROM t_charge_order 
+		WHERE 1 = 1 
+		    <isNotEmpty prepend="AND" property="orderId">
+			order_id = #orderId#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="channelId">
+			channel_id = #channelId#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gameId">
+			game_id = #gameId#
+			</isNotEmpty>
+	</select>
+
+	<update id="updateChargeOrder" parameterClass="chargeOrder">
+		UPDATE t_charge_order
+		SET
+			status = #status#,
+			close_time = #closeTime#
+		WHERE order_id = #orderId#
+	</update>
+</sqlMap>

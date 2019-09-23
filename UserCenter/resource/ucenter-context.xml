@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">  
+    <property name="mappings">  
+         <props>  
+         	<prop key="login.action">LoginAction</prop>
+            <prop key="order.action">OrderAction</prop> 
+            <prop key="browse.action">BrowseAction</prop>   
+            <prop key="servers.action">ServerListAction</prop>   
+            <prop key="bulletin.action">BulletinAction</prop>   
+            <prop key="ipfilter.action">IpFilterAction</prop>
+            <prop key="account.action">AccountAction</prop>
+         </props>  
+    </property>  
+    </bean>      
+    
+    <bean id="LoginAction" class="com.ucenter.channel.action.LoginAction">  
+        <property name="actionName" value="login" />  
+    </bean>  
+    
+    <bean id="OrderAction" class="com.ucenter.channel.action.OrderAction">  
+        <property name="actionName" value="order" />  
+    </bean>  
+    
+    <bean id="BrowseAction" class="com.ucenter.channel.action.OrderAction">  
+        <property name="actionName" value="browse" />  
+    </bean> 
+    
+    <bean id="ServerListAction" class="com.ucenter.channel.action.ServerListAction">  
+        <property name="actionName" value="serverlist" />  
+    </bean> 
+    
+    <bean id="BulletinAction" class="com.ucenter.channel.action.BulletinAction">  
+        <property name="actionName" value="bulletin" />  
+    </bean> 
+    
+    <bean id="IpFilterAction" class="com.ucenter.channel.action.IpFilterAction">  
+        <property name="actionName" value="ipfilter" />  
+    </bean>
+    
+    <bean id="AccountAction" class="com.ucenter.channel.action.AccountAction">  
+        <property name="actionName" value="account" />  
+    </bean>
+    
+    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">  
+    	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />  
+    	<property name="prefix" value="/jsp/" />  
+    	<property name="suffix" value=".jsp" />  
+    </bean>
+    
+    <bean id="ServiceManager" class="com.ucenter.ServiceManager" init-method="init"/>
+	
+</beans>

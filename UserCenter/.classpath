@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resource"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/bossPushlet1.08.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/c3p0-0.9.1-pre9.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-io-1.3.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ibatis-common-2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ibatis-dao-2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ibatis-sqlmap-2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/identity.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/json-lib-2.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/junit-4.4.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.6-bin.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ognl-2.6.11.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/slf4j-api-1.5.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/slf4j-simple-1.5.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring.jar" sourcepath="C:/Users/Administrator/Desktop/spring"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/standard.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xwork-2.0.7.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/kilim-1.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/netty-all-4.0.24.Final-sources.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/netty-all-4.0.24.Final.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/gamemaster.jar" sourcepath="/GameMaster"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

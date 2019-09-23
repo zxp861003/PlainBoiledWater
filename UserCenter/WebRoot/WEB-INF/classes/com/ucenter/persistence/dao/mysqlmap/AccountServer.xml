@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccountServer">
+	<typeAlias alias="AccountServer" type="com.ucenter.persistence.dbbean.AccountServer"/>
+
+	<insert id="insertAccountServer" parameterClass="AccountServer">
+		INSERT INTO t_account_servers(
+			accountId, gameId, serverId, lastLoginTime
+		)VALUES(
+			#accountId#, #gameId#, #serverId#, #lastLoginTime#
+		)
+		 <selectKey resultClass="int" keyProperty="id"> 
+		 	SELECT LAST_INSERT_ID() AS id
+		 </selectKey>
+	</insert>
+
+	<select id="selectAccountServer" resultClass="AccountServer" parameterClass="int">
+		SELECT
+			id,
+			accountId,
+			gameId,
+			serverId,
+			lastLoginTime
+		FROM t_account_servers 
+		WHERE accountId = #value#
+	</select>
+	
+	<select id="findAccountServerList" resultClass="AccountServer" parameterClass="java.lang.String">
+		SELECT
+			id,
+			accountId,
+			gameId,
+			serverId,
+			lastLoginTime
+		FROM t_account_servers 
+		WHERE accountId = #value#
+	</select>
+
+	<select id="selectAccountServerList" resultClass="AccountServer" >
+		SELECT
+			id,
+			accountId,
+			gameId,
+			serverId,
+			lastLoginTime
+		FROM t_account_servers 
+	</select>
+
+	<update id="updateAccountServer" parameterClass="AccountServer">
+		UPDATE t_account_servers
+		SET
+			accountId = #accountId#,
+			gameId = #gameId#,
+			serverId = #serverId#,
+			lastLoginTime = #lastLoginTime#
+		WHERE id = #id#
+	</update>
+
+	
+	<delete id="deleteAccountServer" parameterClass="AccountServer">
+		DELETE FROM t_account_servers WHERE id = #id#
+	</delete>
+</sqlMap>

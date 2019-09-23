@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	
+	<properties resource="ucenter.properties"/>
+	
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property value="${autoCommit}" name="autoCommit"/>
+			<property value="${driver}" name="JDBC.Driver"/>
+			<property value="${url}" name="JDBC.ConnectionURL"/>
+			<property value="${username}" name="JDBC.Username"/>
+			<property value="${password}" name="JDBC.Password"/>
+			<property name="Pool.MaximumActiveConnections" value="4"/>
+			<property name="Pool.MaximumIdleConnections" value="2"/>
+			<property name="Pool.MaximumCheckoutTime" value="120000"/>
+			<property name="Pool.PingEnabled" value="true"/>
+			<property name="Pool.PingQuery" value="select 1"/>
+			<property name="Pool.PingConnectionsOlderThan" value="0"/>
+			<property name="Pool.PingConnectionsNotUsedFor" value="3600000"/>
+		</dataSource>
+	</transactionManager>
+	
+	<sqlMap resource="com/ucenter/persistence/dao/mysqlmap/ChargeOrder.xml"/>
+	<sqlMap resource="com/ucenter/persistence/dao/mysqlmap/AccountBean.xml"/>
+	<sqlMap resource="com/ucenter/persistence/dao/mysqlmap/IpFilter.xml"/>
+	<sqlMap resource="com/ucenter/persistence/dao/mysqlmap/AccountServer.xml"/>
+	
+</sqlMapConfig>
